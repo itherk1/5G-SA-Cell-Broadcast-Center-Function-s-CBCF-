@@ -1,25 +1,45 @@
 package com.example.cbcf.model;
 
+/**
+ * Data model for the NonUeMessageTransfer request.
+ * This represents the payload sent by the CBCF to the AMF (or in this case, the CBCF's Namf_Communication service).
+ *
+ * Simplified for demonstration purposes. Real 3GPP specs would have more fields.
+ */
 public class NonUeMessageTransferRequest {
-    private String messageId;
-    private String targetId;
-    private String messageContent;
+    private String messageContent; // The actual broadcast message content
+    private String targetUeId;     // An identifier for the target UE (e.g., SUPI, PEI)
 
-    public String getMessageId() { return messageId; }
-    public void setMessageId(String messageId) { this.messageId = messageId; }
+    // Default constructor for JSON deserialization
+    public NonUeMessageTransferRequest() {
+    }
 
-    public String getTargetId() { return targetId; }
-    public void setTargetId(String targetId) { this.targetId = targetId; }
+    public NonUeMessageTransferRequest(String messageContent, String targetUeId) {
+        this.messageContent = messageContent;
+        this.targetUeId = targetUeId;
+    }
 
-    public String getMessageContent() { return messageContent; }
-    public void setMessageContent(String messageContent) { this.messageContent = messageContent; }
+    public String getMessageContent() {
+        return messageContent;
+    }
+
+    public void setMessageContent(String messageContent) {
+        this.messageContent = messageContent;
+    }
+
+    public String getTargetUeId() {
+        return targetUeId;
+    }
+
+    public void setTargetUeId(String targetUeId) {
+        this.targetUeId = targetUeId;
+    }
 
     @Override
     public String toString() {
         return "NonUeMessageTransferRequest{" +
-                "messageId='" + messageId + '\'' +
-                ", targetId='" + targetId + '\'' +
-                ", messageContent='" + messageContent + '\'' +
-                '}';
+               "messageContent='" + messageContent + '\'' +
+               ", targetUeId='" + targetUeId + '\'' +
+               '}';
     }
 }

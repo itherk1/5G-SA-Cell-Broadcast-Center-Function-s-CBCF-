@@ -1,30 +1,45 @@
 package com.example.cbcf.model;
 
+/**
+ * Data model for the NonUeN2InfoSubscribe request.
+ * This represents the payload sent by a consumer (e.g., CBCF) to subscribe to N2 information.
+ *
+ * Simplified for demonstration purposes. Real 3GPP specs would have more fields.
+ */
 public class NonUeN2InfoSubscribeRequest {
-    private String subscriptionId;
-    private String notificationUri;
-    private String n2InfoType;
-    private String tai;
+    private String callbackUrl; // URL where notifications should be sent
+    private String n2InfoType;  // Type of N2 information to subscribe to (e.g., "CELL_BROADCAST_INFO")
 
-    public String getSubscriptionId() { return subscriptionId; }
-    public void setSubscriptionId(String subscriptionId) { this.subscriptionId = subscriptionId; }
+    // Default constructor for JSON deserialization
+    public NonUeN2InfoSubscribeRequest() {
+    }
 
-    public String getNotificationUri() { return notificationUri; }
-    public void setNotificationUri(String notificationUri) { this.notificationUri = notificationUri; }
+    public NonUeN2InfoSubscribeRequest(String callbackUrl, String n2InfoType) {
+        this.callbackUrl = callbackUrl;
+        this.n2InfoType = n2InfoType;
+    }
 
-    public String getN2InfoType() { return n2InfoType; }
-    public void setN2InfoType(String n2InfoType) { this.n2InfoType = n2InfoType; }
+    public String getCallbackUrl() {
+        return callbackUrl;
+    }
 
-    public String getTai() { return tai; }
-    public void setTai(String tai) { this.tai = tai; }
+    public void setCallbackUrl(String callbackUrl) {
+        this.callbackUrl = callbackUrl;
+    }
+
+    public String getN2InfoType() {
+        return n2InfoType;
+    }
+
+    public void setN2InfoType(String n2InfoType) {
+        this.n2InfoType = n2InfoType;
+    }
 
     @Override
     public String toString() {
         return "NonUeN2InfoSubscribeRequest{" +
-                "subscriptionId='" + subscriptionId + '\'' +
-                ", notificationUri='" + notificationUri + '\'' +
-                ", n2InfoType='" + n2InfoType + '\'' +
-                ", tai='" + tai + '\'' +
-                '}';
+               "callbackUrl='" + callbackUrl + '\'' +
+               ", n2InfoType='" + n2InfoType + '\'' +
+               '}';
     }
 }
